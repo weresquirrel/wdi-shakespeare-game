@@ -3,10 +3,41 @@
   <head>
     <meta charset="utf-8">
     <title>My First Website Online</title>
-    <script type="text/javascript" src="./js/script.js"></script>
+    <!-- <link rel="stylesheet" href="./css/reset.css"> -->
     <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./js/script.js"></script>
   </head>
   <body>
-    <h1>My first site</h1>
+    <header>
+      <h1>Shake Your Spear!</h1>
+      <div id="level">
+        <!-- wrap the text in a <p> tag? -->
+        Level: <span class="level">easy</span>
+      </div>
+      <div id="score">
+        <img src="./pictures/happyFace.png" alt="Happy theather mask" id="happy">
+        <img src="./pictures/sadFace.png" alt="Sad theather mask" id="sad">
+        <p>score: <span>0</span></p>
+      </div>
+      <div id="menu">
+        menu
+      </div>
+    </header>
+    <main>
+      <h2></h2>
+      <!-- maybe we don't need this! -->
+      <div id="hint"></div>
+      <ul id="options">
+        <!-- <li>option 1</li>
+        <li>option 2</li>
+        <li>option 3</li> -->
+      </ul>
+    </main>
+    <footer>
+      <button type="button" name="prompt">Hint!</button>
+      <!-- <div id="prompt">Hint!</div> -->
+    </footer>
+
   </body>
 </html>
