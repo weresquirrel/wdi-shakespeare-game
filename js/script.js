@@ -1,5 +1,14 @@
 $(() => {
 /////////
+  let currentScore = 0;
+  console.log(currentScore);
+
+  const $h2 = $('h2');
+  const $options = $('#options');
+  const $score = $('#score').find('p').find('span');
+  $score.text(currentScore);
+  // console.log($score);
+
   // THE PROTOTYPE
   function Sentence(sentenceStart, sentenceFinish, rightAnswer, wrongAnswers, worth){
     this.sentenceStart = sentenceStart;
@@ -10,7 +19,6 @@ $(() => {
     this.options = this.wrongAnswers;
     this.options.push(rightAnswer);
     // this.options = [rightAnswer, 'a flamingo', 'an idiot', 'a spaniel'];
-
     this.incomplete = function() {
       return `${this.sentenceStart} _______ ${this.sentenceFinish}`;
     };
@@ -46,6 +54,8 @@ $(() => {
   // - the next sentence becomes available
   function caseCorrect() {
     console.log('correct');
+    currentScore = currentScore + 1;
+    $score.text(currentScore);
   }
 
 
@@ -59,6 +69,8 @@ $(() => {
   // - the already chosen wrong answer is not clickable anymore, it's still there but disabled.
   function caseIncorrect() {
     console.log('incorrect');
+    currentScore = currentScore - 1;
+    $score.text(currentScore);
   }
 
   //// If the user clicked the HINT button
@@ -69,8 +81,7 @@ $(() => {
   // I need the options in a random order
 
   // DISPLAY
-  const $h2 = $('h2');
-  const $options = $('#options');
+
 
   function sentenceDisplay(incomplete) {
     $h2.text(incomplete);
@@ -92,6 +103,8 @@ $(() => {
     console.log(`${userChioce} was clicked`);
     //call the checkTheAnswer() with the text of the li
   });
+
+
 
   // const $form = $('#subscribe');
   // const $submit = $('.submit');
