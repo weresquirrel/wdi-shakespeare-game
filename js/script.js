@@ -6,6 +6,8 @@ $(() => {
   const $h2 = $('h2');
   const $options = $('#options');
   const $score = $('#score').find('p').find('span');
+  const $happyMask = $('#happy');
+  const $sadMask = $('#sad');
   $score.text(currentScore);
   let challengesLevel1 = [];
 
@@ -60,8 +62,10 @@ $(() => {
     currentScore = currentScore + 1;
     $score.text(currentScore);
     sentenceDisplay(challengesLevel1[0].complete());
+    $happyMask.addClass('active');
     setTimeout(() => {
       next();
+      $happyMask.removeClass('active');
     }, 3000);
   }
 
@@ -75,6 +79,10 @@ $(() => {
     console.log('incorrect');
     currentScore = currentScore - 1;
     $score.text(currentScore);
+    $sadMask.addClass('active');
+    setTimeout(() => {
+      $sadMask.removeClass('active');
+    }, 2000);
   }
 
   //// If the user clicked the HINT button

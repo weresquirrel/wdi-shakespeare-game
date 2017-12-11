@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: lightblue;
 }
@@ -30,6 +34,10 @@ h1 {
   height: auto;
 }
 
+#score img.active {
+  border: 1px solid black;
+}
+
 #menu {
   flex: 1;
   text-align: right;
@@ -50,7 +58,7 @@ h2 {
 
 #options li {
   list-style: none;
-  height: 10px;
+  /*height: 10px;*/
   padding: 20px;
   border: 1px solid black;
   /*display: inline-block;*/
