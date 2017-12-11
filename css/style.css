@@ -7,6 +7,14 @@ body {
   height: auto;
 }
 
+h2 {
+  text-align: center;
+}
+
+#options {
+  text-align: center;
+}
+
 #options li {
   list-style: none;
   height: 10px;
@@ -17,10 +25,6 @@ body {
   margin-right: 8px;
 }
 
-h2 {
-  text-align: center;
-}
-
-#options {
-  text-align: center;
+#options li:hover {
+  color: lightblue;
 }
