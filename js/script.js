@@ -1,27 +1,42 @@
 $(() => {
 /////////
   // THE PROTOTYPE
-  function Sentence(sentenceStart, sentenceFinish, rightAnswer, worth){
+  function Sentence(sentenceStart, sentenceFinish, rightAnswer, wrongAnswers, worth){
     this.sentenceStart = sentenceStart;
     this.sentenceFinish = sentenceFinish;
     this.rightAnswer = rightAnswer;
-    this.options = [rightAnswer, 'a flamingo', 'an idiot', 'a spaniel'];
+    this.wrongAnswers = wrongAnswers;
     this.worth = worth;
+    this.options = this.wrongAnswers;
+    this.options.push(rightAnswer);
+    // this.options = [rightAnswer, 'a flamingo', 'an idiot', 'a spaniel'];
+
     this.incomplete = function() {
       return `${this.sentenceStart} _______ ${this.sentenceFinish}`;
     };
   }
   // the instances
   // SENTENCE 1
-  const sentence1 = new Sentence('"My kingdom for', '!"', 'a horse', 1);
+  const sentence1 = new Sentence('"My kingdom for', '!"', 'a horse', ['a flamingo', 'an idiot', 'a spaniel'], 1);
+
   console.log(sentence1.incomplete());
+  console.log(sentence1.wrongAnswers);
+  console.log(sentence1.worth);
+  console.log(sentence1.options);
+
   // SENTENCE 2
-  const sentence2 = new Sentence('"To be,', 'not to be"', 'or', 1);
+  const sentence2 = new Sentence('"To be,', 'not to be"', 'or',['and', 'by'], 1);
   console.log(sentence2.incomplete());
-  // I need to define the wrong answers individually!
-  sentence2.wrongAnswers = ['and', 'by'];
-  sentence1.wrongAnswers = ['a flamingo', 'an idiot', 'a spaniel'];
-  console.log(sentence2.wrongAnswers);
+  console.log(sentence2.options);
+
+  // ////I need a function to decide if the answer the user chose is or not the right one
+  // function checkTheAnswer(usersChoice, sentenceID) {
+  //   if (userChoice === sentenceId.rightAnswer) {
+  //     caseCorrect();
+  //   } else {
+  //     caseIncorrect();
+  //   }
+  // }
 
   //// If the user clicked the RIGHT answer
   // - the correct, completed sentence becomes visible in the <h2>
@@ -29,7 +44,9 @@ $(() => {
   // - The happy mask is 'active'
   // - scores increased by the worth of the current sentence
   // - the next sentence becomes available
-
+  // function caseCorrect() {
+  //
+  // }
 
 
 
@@ -40,6 +57,9 @@ $(() => {
   // - the hint button is 'waving' like: 'hey, I'm here, use me'
   // - next sentence is not available until the click on the right answer
   // - the already chosen wrong answer is not clickable anymore, it's still there but disabled.
+  // function caseIncorrect() {
+  //
+  // }
 
   //// If the user clicked the HINT button
   // - scores decreased by 1 (always by 1) for using help. Negative scores are possible.
