@@ -32,10 +32,7 @@ $(() => {
 
   // SENTENCE 2
   const sentence2 = new Sentence('"To be,', 'not to be"', 'or',['and', 'by'], 1);
-  // console.log(sentence2.incomplete());
   challengesLevel1.push(sentence2);
-  // console.log(sentence2.options);
-  // console.log(challengesLevel1);
 
   // ////I need a function to decide if the answer the user chose is or not the right one
   function checkTheAnswer(userChoice) {
@@ -59,26 +56,14 @@ $(() => {
   // - scores increased by the worth of the current sentence
   // - the next sentence becomes available
   function caseCorrect() {
-    console.log('correct');
+    // console.log('correct');
     currentScore = currentScore + 1;
     $score.text(currentScore);
     sentenceDisplay(challengesLevel1[0].complete());
-    //calling next needs a delay
     setTimeout(() => {
-      // clearInterval(timerId2);
       next();
     }, 3000);
   }
-
-
-//   setTimeout(() => {
-//     clearInterval(timerId2);
-//     if(timeRemaining === 0) {
-//       // console.log('tucan');
-//       $timer.addClass('ringing');
-//     }
-//   }, (1000 * timeRemaining));
-// }
 
   //// If the user clicked a WRONG answer
   // - The sad mask is 'active'
@@ -97,7 +82,7 @@ $(() => {
   // - the hint information becomes visible on screen
 
   // RANDOM
-  // I need the options in a random order
+  // I need the options in a random order, it's coming hopefully soon
 
   // DISPLAY
   function sentenceDisplay(incomplete) {
@@ -119,8 +104,7 @@ $(() => {
   $options.children().on('click', function() {
     const userChioce = this.innerHTML;
     checkTheAnswer(userChioce);
-    console.log(`${userChioce} was clicked`);
-    //call the checkTheAnswer() with the text of the li
+    // console.log(`${userChioce} was clicked`);
   });
 
 
