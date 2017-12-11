@@ -71,5 +71,10 @@ h2 {
 }
 
 footer {
-  text-align: center;
+  /*text-align: center;*/
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  /*I'm not sure about the height*/
+  height: 25vh;
 }
