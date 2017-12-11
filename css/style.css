@@ -2,6 +2,7 @@ body {
   background-color: lightblue;
 }
 
+
 #score img {
   width: 90px;
   height: auto;
@@ -27,4 +28,8 @@ h2 {
 
 #options li:hover {
   color: lightblue;
+}
+
+footer {
+  text-align: center;
 }

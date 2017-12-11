@@ -1,13 +1,13 @@
 $(() => {
 /////////
+// Some global variables
   let currentScore = 0;
-  console.log(currentScore);
 
   const $h2 = $('h2');
   const $options = $('#options');
   const $score = $('#score').find('p').find('span');
   $score.text(currentScore);
-  // console.log($score);
+  let challengesLevel1 = [];
 
   // THE PROTOTYPE
   function Sentence(sentenceStart, sentenceFinish, rightAnswer, wrongAnswers, worth){
@@ -18,24 +18,24 @@ $(() => {
     this.worth = worth;
     this.options = this.wrongAnswers;
     this.options.push(rightAnswer);
-    // this.options = [rightAnswer, 'a flamingo', 'an idiot', 'a spaniel'];
     this.incomplete = function() {
       return `${this.sentenceStart} _______ ${this.sentenceFinish}`;
+    };
+    this.complete = function() {
+      return `${this.sentenceStart} ${this.rightAnswer} ${this.sentenceFinish}`;
     };
   }
   // the instances
   // SENTENCE 1
   const sentence1 = new Sentence('"My kingdom for', '!"', 'a horse', ['a flamingo', 'an idiot', 'a spaniel'], 1);
-
-  console.log(sentence1.incomplete());
-  console.log(sentence1.wrongAnswers);
-  console.log(sentence1.worth);
-  console.log(sentence1.options);
+  challengesLevel1.push(sentence1);
 
   // SENTENCE 2
   const sentence2 = new Sentence('"To be,', 'not to be"', 'or',['and', 'by'], 1);
-  console.log(sentence2.incomplete());
-  console.log(sentence2.options);
+  // console.log(sentence2.incomplete());
+  challengesLevel1.push(sentence2);
+  // console.log(sentence2.options);
+  // console.log(challengesLevel1);
 
   // ////I need a function to decide if the answer the user chose is or not the right one
   function checkTheAnswer(userChoice) {
@@ -44,6 +44,12 @@ $(() => {
     } else {
       caseIncorrect();
     }
+  }
+
+  function next() {
+    console.log('next');
+    sentenceDisplay(challengesLevel1[1].incomplete());
+    optionsDisplay(challengesLevel1[1].options);
   }
 
   //// If the user clicked the RIGHT answer
@@ -56,10 +62,23 @@ $(() => {
     console.log('correct');
     currentScore = currentScore + 1;
     $score.text(currentScore);
+    sentenceDisplay(challengesLevel1[0].complete());
+    //calling next needs a delay
+    setTimeout(() => {
+      // clearInterval(timerId2);
+      next();
+    }, 3000);
   }
 
 
-
+//   setTimeout(() => {
+//     clearInterval(timerId2);
+//     if(timeRemaining === 0) {
+//       // console.log('tucan');
+//       $timer.addClass('ringing');
+//     }
+//   }, (1000 * timeRemaining));
+// }
 
   //// If the user clicked a WRONG answer
   // - The sad mask is 'active'
@@ -81,13 +100,12 @@ $(() => {
   // I need the options in a random order
 
   // DISPLAY
-
-
   function sentenceDisplay(incomplete) {
     $h2.text(incomplete);
   }
 
   function optionsDisplay(array) {
+    $options.find('li').remove();
     for(let i = 0; i < array.length; i++) {
       const listElement = document.createElement('li');
       listElement.innerHTML = array[i];
@@ -95,8 +113,9 @@ $(() => {
     }
   }
 
-  sentenceDisplay(sentence1.incomplete());
-  optionsDisplay(sentence1.options);
+  sentenceDisplay(challengesLevel1[0].incomplete());
+  optionsDisplay(challengesLevel1[0].options);
+
   $options.children().on('click', function() {
     const userChioce = this.innerHTML;
     checkTheAnswer(userChioce);
@@ -104,15 +123,6 @@ $(() => {
     //call the checkTheAnswer() with the text of the li
   });
 
-
-
-  // const $form = $('#subscribe');
-  // const $submit = $('.submit');
-  //
-  // $form.on('submit', (e) => {
-  //   e.preventDefault();
-  //   <<<<<<< HEAD
-  //   $submit.text('Submitted!');
 
 ///////////
 });
