@@ -30,13 +30,13 @@ $(() => {
   console.log(sentence2.options);
 
   // ////I need a function to decide if the answer the user chose is or not the right one
-  // function checkTheAnswer(usersChoice, sentenceID) {
-  //   if (userChoice === sentenceId.rightAnswer) {
-  //     caseCorrect();
-  //   } else {
-  //     caseIncorrect();
-  //   }
-  // }
+  function checkTheAnswer(userChoice) {
+    if(userChoice === sentence1.rightAnswer) {
+      caseCorrect();
+    } else {
+      caseIncorrect();
+    }
+  }
 
   //// If the user clicked the RIGHT answer
   // - the correct, completed sentence becomes visible in the <h2>
@@ -44,9 +44,9 @@ $(() => {
   // - The happy mask is 'active'
   // - scores increased by the worth of the current sentence
   // - the next sentence becomes available
-  // function caseCorrect() {
-  //
-  // }
+  function caseCorrect() {
+    console.log('correct');
+  }
 
 
 
@@ -57,9 +57,9 @@ $(() => {
   // - the hint button is 'waving' like: 'hey, I'm here, use me'
   // - next sentence is not available until the click on the right answer
   // - the already chosen wrong answer is not clickable anymore, it's still there but disabled.
-  // function caseIncorrect() {
-  //
-  // }
+  function caseIncorrect() {
+    console.log('incorrect');
+  }
 
   //// If the user clicked the HINT button
   // - scores decreased by 1 (always by 1) for using help. Negative scores are possible.
@@ -86,6 +86,12 @@ $(() => {
 
   sentenceDisplay(sentence1.incomplete());
   optionsDisplay(sentence1.options);
+  $options.children().on('click', function() {
+    const userChioce = this.innerHTML;
+    checkTheAnswer(userChioce);
+    console.log(`${userChioce} was clicked`);
+    //call the checkTheAnswer() with the text of the li
+  });
 
   // const $form = $('#subscribe');
   // const $submit = $('.submit');
