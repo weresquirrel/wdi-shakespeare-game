@@ -28,20 +28,19 @@ $(() => {
     };
   }
   // the instances
-  // SENTENCE 1 My kingdom for a horse!
-  const sentence1 = new Sentence('"My kingdom for', '!"', 'a horse', ['a flamingo', 'an idiot', 'a spaniel'], 1);
+  // SENTENCE 1 To be, or not to be
+  const sentence1 = new Sentence('"To be,', 'not to be"', 'or',['and', 'by'], 1);
   challengesLevel1.push(sentence1);
 
-  // SENTENCE 2 To be, or not to be
-  const sentence2 = new Sentence('"To be,', 'not to be"', 'or',['and', 'by'], 1);
+  // SENTENCE 2 My kingdom for a horse!
+  const sentence2 = new Sentence('"My kingdom for', '!"', 'a horse', ['a flamingo', 'an idiot', 'a spaniel'], 1);
   challengesLevel1.push(sentence2);
 
-  // SENTENCE 3  That which we call a rose By any other name would smell as sweet;
+  // SENTENCE 3 That which we call a rose By any other name would smell as sweet;
   const sentence3 = new Sentence('"That which we call', 'By any other name would smell as sweet"', 'a rose',['a chicken', 'a daffodil', 'a fennel'], 1);
   challengesLevel1.push(sentence3);
 
   // ////I need a function to decide if the answer the user chose is or not the right one
-  //altered
   function checkTheAnswer(userChoice, currentChallenge, id) {
     if(userChoice === currentChallenge.rightAnswer) {
       caseCorrect(currentChallenge, id);
@@ -49,12 +48,6 @@ $(() => {
       caseIncorrect();
     }
   }
-
-  // function next(currentChallenge) {
-  //   console.log('next');
-  //   sentenceDisplay(challengesLevel1[1].incomplete());
-  //   optionsDisplay(challengesLevel1[1].options);
-  // }
 
   //// If the user clicked the RIGHT answer
   // - the correct, completed sentence becomes visible in the <h2>
@@ -125,18 +118,6 @@ $(() => {
   }
 
   startGame(0);
-
-  //go
-  // sentenceDisplay(challengesLevel1[0].incomplete());
-  // optionsDisplay(challengesLevel1[0].options);
-
-  //go
-  // $options.children().on('click', function() {
-  //   const userChioce = this.innerHTML;
-  //   checkTheAnswer(userChioce);
-  //   // console.log(`${userChioce} was clicked`);
-  // });
-
 
 ///////////
 });
