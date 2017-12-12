@@ -49,6 +49,13 @@ $(() => {
     }
   }
 
+  //// The End of the startGame
+  function theEnd() {
+    console.log('the end');
+    $options.find('li').remove();
+    sentenceDisplay(`All's Well That Ends Well`);
+  }
+
   //// If the user clicked the RIGHT answer
   // - the correct, completed sentence becomes visible in the <h2>
   // - all options fading out/become 'disabled'/disappear - I don't know yet, I think I should see this case and see what would be the nice to experience as a user
@@ -63,7 +70,13 @@ $(() => {
     $happyMask.addClass('active');
     setTimeout(() => {
       // next(currentChallenge);
-      startGame(id + 1);
+      id = id + 1;
+      // I should check here if the id is greater than it would be possible in the array
+      if(id > challengesLevel1.length - 1) {
+        theEnd();
+      } else {
+        startGame(id);
+      }
       $happyMask.removeClass('active');
     }, 3000);
   }
@@ -107,6 +120,7 @@ $(() => {
   }
 
   function startGame(id) {
+    console.log(id);
     const currentChallenge = challengesLevel1[id];
     sentenceDisplay(currentChallenge.incomplete());
     optionsDisplay(currentChallenge.options);
@@ -118,6 +132,5 @@ $(() => {
   }
 
   startGame(0);
-
 ///////////
 });
