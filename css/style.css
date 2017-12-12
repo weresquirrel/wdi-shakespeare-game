@@ -34,7 +34,7 @@ h1 {
   height: auto;
 }
 
-#score img.active {
+.active {
   border: 1px solid black;
 }
 
@@ -68,16 +68,37 @@ h2 {
 
 #options li:hover {
   color: lightblue;
+  /*font-weight: bold;*/
 }
 
 footer {
   text-align: center;
-  margin-top: 85px;
+  /*background: url("../pictures/stageLine.png") no-repeat bottom center;
+  background-size: contain;*/
+  /*margin-top: 85px;*/
   /*display: flex;*/
   /*align-items: flex-end;*/
   /*justify-content: center;*/
   /*I'm not sure about the height*/
   /*height: 25vh;*/
+}
+
+footer button {
+  border: none;
+  width: 230px;
+  height: 113px;
+  /*background-color: red;*/
+  background: url("../pictures/prompt.png") no-repeat bottom center;
+  background-size: cover;
+  padding-bottom: 40px;
+}
+
+footer button:hover {
+  font-weight: bold;
+}
+
+footer button:focus {
+  outline: none;
 }
 
 footer p {

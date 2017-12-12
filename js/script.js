@@ -98,8 +98,10 @@ $(() => {
     currentScore = currentScore - 1;
     $score.text(currentScore);
     $sadMask.addClass('active');
+    $hintBtn.addClass('active');
     setTimeout(() => {
       $sadMask.removeClass('active');
+      $hintBtn.removeClass('active');
     }, 2000);
   }
 
@@ -134,14 +136,22 @@ $(() => {
   function startGame(id) {
     console.log(id);
     const currentChallenge = challengesLevel1[id];
-    console.log(currentChallenge.hint);
+    // console.log(currentChallenge.hint);
     sentenceDisplay(currentChallenge.incomplete());
     optionsDisplay(currentChallenge.options);
-    $options.children().on('click', function() {
+    $options.children().addClass('clickable');
+    $('.clickable').on('click', function() {
       const userChioce = this.innerHTML;
       checkTheAnswer(userChioce, currentChallenge, id);
+      this.classList.remove('clickable');
+      // this.removeClass('clickable');
       // console.log(`${userChioce} was clicked`);
     });
+    // $options.children().on('click', function() {
+    //   const userChioce = this.innerHTML;
+    //   checkTheAnswer(userChioce, currentChallenge, id);
+    //   // console.log(`${userChioce} was clicked`);
+    // });
     $hintBtn.on('click', () => {
       hintCase(currentChallenge.hint);
       console.log(currentChallenge.hint);
