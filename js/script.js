@@ -48,7 +48,7 @@ $(() => {
   function checkTheAnswer(userChoice, currentChallenge, id, target) {
     // console.log("t", target);
     if(userChoice === currentChallenge.rightAnswer) {
-      caseCorrect(currentChallenge, id);
+      caseCorrect(currentChallenge, id, target);
     } else {
       caseIncorrect(target);
     }
@@ -68,9 +68,10 @@ $(() => {
   // - The happy mask is 'active'
   // - scores increased by the worth of the current sentence
   // - the next sentence becomes available
-  function caseCorrect(currentChallenge, id) {
+  function caseCorrect(currentChallenge, id, target) {
     // console.log('correct');
     currentScore = ++currentScore;
+    $(target).attr('disabled', 'disabled');
     $score.text(currentScore);
     sentenceDisplay(currentChallenge.complete());
     $happyMask.addClass('active');
@@ -119,6 +120,53 @@ $(() => {
 
   // RANDOM
   // I need the options in a random order, it's coming hopefully soon
+  function randomInt(array) {
+    return Math.floor(Math.random() * array.length);
+  }
+  function randomizeArray(array) {
+    const tempArray = [];
+    function copyArrayElement(Int) {
+      tempArray.push(array[Int]);
+    }
+    function deleteArrayElement(delInt) {
+      array.splice(delInt, 1);
+    }
+    while (array.length > 0) {
+      const randomInteger = randomInt(array);
+      copyArrayElement(randomInteger);
+      deleteArrayElement(randomInteger);
+    }
+    return tempArray;
+  }
+  // const arrayOriginal = ['egy', 'ketto', 'harom', 'negy', 'Odonke'];
+  // // console.log(arrayOriginal.length);
+  //
+  // const arrayTemp = [];
+  //
+  // // return Int
+  // function guppi() {
+  //   return Math.floor(Math.random() * arrayOriginal.length);
+  // }
+  //
+  // function owl(owlInt) {
+  //   arrayTemp.push(arrayOriginal[owlInt]);
+  // }
+  //
+  //
+  // function frog(frogInt) {
+  //   arrayOriginal.splice(frogInt, 1);
+  // }
+  //
+  // while (arrayOriginal.length > 0) {
+  //   const guppiInt = guppi();
+  //   owl(guppiInt);
+  //   frog(guppiInt);
+  // }
+  //
+  // console.log(arrayOriginal);
+  // console.log(arrayTemp);
+
+
 
   // DISPLAY
   function sentenceDisplay(incomplete) {
@@ -138,7 +186,10 @@ $(() => {
     console.log(id);
     const currentChallenge = challengesLevel1[id];
     sentenceDisplay(currentChallenge.incomplete());
-    optionsDisplay(currentChallenge.options);
+    // here supposed to be randomised the original array
+    const tempArray = randomizeArray(currentChallenge.options);
+    optionsDisplay(tempArray);
+    // optionsDisplay(currentChallenge.options);
     $options.children().on('click', function(e) {
       const userChioce = this.innerHTML;
       checkTheAnswer(userChioce, currentChallenge, id, e.target);
