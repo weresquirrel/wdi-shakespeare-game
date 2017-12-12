@@ -14,11 +14,12 @@ $(() => {
   let challengesLevel1 = [];
 
   // THE PROTOTYPE
-  function Sentence(sentenceStart, sentenceFinish, rightAnswer, wrongAnswers, worth){
+  function Sentence(sentenceStart, sentenceFinish, rightAnswer, wrongAnswers, hint, worth){
     this.sentenceStart = sentenceStart;
     this.sentenceFinish = sentenceFinish;
     this.rightAnswer = rightAnswer;
     this.wrongAnswers = wrongAnswers;
+    this.hint = hint;
     this.worth = worth;
     this.options = this.wrongAnswers;
     this.options.push(rightAnswer);
@@ -31,15 +32,16 @@ $(() => {
   }
   // the instances
   // SENTENCE 1 To be, or not to be
-  const sentence1 = new Sentence('"To be,', 'not to be"', 'or',['and', 'by'], 1);
+  // `It's in Hamlet, you artless boar-pig!`
+  const sentence1 = new Sentence('"To be,', 'not to be"', 'or',['and', 'by'], `It's in Hamlet, you artless boar-pig!`, 1);
   challengesLevel1.push(sentence1);
 
   // SENTENCE 2 My kingdom for a horse!
-  const sentence2 = new Sentence('"My kingdom for', '!"', 'a horse', ['a flamingo', 'an idiot', 'a spaniel'], 1);
+  const sentence2 = new Sentence('"My kingdom for', '!"', 'a horse', ['a flamingo', 'an idiot', 'a spaniel'], `It's in Richard III, you fool-born malt-worm!`, 1);
   challengesLevel1.push(sentence2);
 
   // SENTENCE 3 That which we call a rose By any other name would smell as sweet;
-  const sentence3 = new Sentence('"That which we call', 'By any other name would smell as sweet"', 'a rose',['a chicken', 'a daffodil', 'a fennel'], 1);
+  const sentence3 = new Sentence('"That which we call', 'By any other name would smell as sweet"', 'a rose',['a chicken', 'a daffodil', 'a fennel'], `It's in Romeo And Juliet, you puking flap-dragon!`, 1);
   challengesLevel1.push(sentence3);
 
   // ////I need a function to decide if the answer the user chose is or not the right one
@@ -55,6 +57,7 @@ $(() => {
   function theEnd() {
     console.log('the end');
     $options.find('li').remove();
+    $hintBtn.css('display', 'none');
     sentenceDisplay(`All's Well That Ends Well`);
   }
 
@@ -79,6 +82,7 @@ $(() => {
       } else {
         startGame(id);
       }
+      $hintText.text('');
       $happyMask.removeClass('active');
     }, 3000);
   }
@@ -103,16 +107,12 @@ $(() => {
   // - scores decreased by 1 (always by 1) for using help. Negative scores are possible.
   // - the hint information becomes visible on screen
   // - maybe the prompt not only gives helping info but insults the player (with shakespeare's words) for his lack of knowledge. Ex.: This is in Richard III, you puking flap-dragon!
-  function hintCase() {
-    console.log('he-he!');
+  function hintCase(hint) {
+    // console.log('he-he!');
+    $hintText.text('');
     currentScore = currentScore - 1;
-    $hintText.text('ha-ha');
+    $hintText.text(hint);
   }
-
-  $hintBtn.on('click', () => {
-    hintCase();
-  });
-
 
   // RANDOM
   // I need the options in a random order, it's coming hopefully soon
@@ -134,12 +134,17 @@ $(() => {
   function startGame(id) {
     console.log(id);
     const currentChallenge = challengesLevel1[id];
+    console.log(currentChallenge.hint);
     sentenceDisplay(currentChallenge.incomplete());
     optionsDisplay(currentChallenge.options);
     $options.children().on('click', function() {
       const userChioce = this.innerHTML;
       checkTheAnswer(userChioce, currentChallenge, id);
       // console.log(`${userChioce} was clicked`);
+    });
+    $hintBtn.on('click', () => {
+      hintCase(currentChallenge.hint);
+      console.log(currentChallenge.hint);
     });
   }
 
