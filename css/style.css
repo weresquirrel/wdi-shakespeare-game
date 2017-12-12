@@ -71,10 +71,18 @@ h2 {
 }
 
 footer {
-  /*text-align: center;*/
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  text-align: center;
+  margin-top: 85px;
+  /*display: flex;*/
+  /*align-items: flex-end;*/
+  /*justify-content: center;*/
   /*I'm not sure about the height*/
-  height: 25vh;
+  /*height: 25vh;*/
+}
+
+footer p {
+  height: 40px;
+  padding: 10px 0;
+  display: block;
+  /*background-color: yellow;*/
 }

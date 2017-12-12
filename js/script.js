@@ -8,6 +8,8 @@ $(() => {
   const $score = $('#score').find('p').find('span');
   const $happyMask = $('#happy');
   const $sadMask = $('#sad');
+  const $hintText = $('#hint');
+  const $hintBtn = $('button');
   $score.text(currentScore);
   let challengesLevel1 = [];
 
@@ -101,6 +103,16 @@ $(() => {
   // - scores decreased by 1 (always by 1) for using help. Negative scores are possible.
   // - the hint information becomes visible on screen
   // - maybe the prompt not only gives helping info but insults the player (with shakespeare's words) for his lack of knowledge. Ex.: This is in Richard III, you puking flap-dragon!
+  function hintCase() {
+    console.log('he-he!');
+    currentScore = currentScore - 1;
+    $hintText.text('ha-ha');
+  }
+
+  $hintBtn.on('click', () => {
+    hintCase();
+  });
+
 
   // RANDOM
   // I need the options in a random order, it's coming hopefully soon
