@@ -45,18 +45,19 @@ $(() => {
   challengesLevel1.push(sentence3);
 
   // ////I need a function to decide if the answer the user chose is or not the right one
-  function checkTheAnswer(userChoice, currentChallenge, id) {
+  function checkTheAnswer(userChoice, currentChallenge, id, target) {
+    // console.log("t", target);
     if(userChoice === currentChallenge.rightAnswer) {
       caseCorrect(currentChallenge, id);
     } else {
-      caseIncorrect();
+      caseIncorrect(target);
     }
   }
 
   //// The End of the startGame
   function theEnd() {
-    console.log('the end');
-    $options.find('li').remove();
+    // console.log('the end');
+    $options.find('button').remove();
     $hintBtn.css('display', 'none');
     sentenceDisplay(`All's Well That Ends Well`);
   }
@@ -69,13 +70,13 @@ $(() => {
   // - the next sentence becomes available
   function caseCorrect(currentChallenge, id) {
     // console.log('correct');
-    currentScore = currentScore + 1;
+    currentScore = ++currentScore;
     $score.text(currentScore);
     sentenceDisplay(currentChallenge.complete());
     $happyMask.addClass('active');
     setTimeout(() => {
       // next(currentChallenge);
-      id = id + 1;
+      id = ++id;
       // I should check here if the id is greater than it would be possible in the array
       if(id > challengesLevel1.length - 1) {
         theEnd();
@@ -93,9 +94,10 @@ $(() => {
   // - the hint button is 'waving' like: 'hey, I'm here, use me'
   // - next sentence is not available until the click on the right answer
   // - the already chosen wrong answer is not clickable anymore, it's still there but disabled.
-  function caseIncorrect() {
-    console.log('incorrect');
-    currentScore = currentScore - 1;
+  function caseIncorrect(target) {
+    // console.log('incorrect');
+    $(target).attr('disabled', 'disabled');
+    currentScore = --currentScore;
     $score.text(currentScore);
     $sadMask.addClass('active');
     $hintBtn.addClass('active');
@@ -110,7 +112,6 @@ $(() => {
   // - the hint information becomes visible on screen
   // - maybe the prompt not only gives helping info but insults the player (with shakespeare's words) for his lack of knowledge. Ex.: This is in Richard III, you puking flap-dragon!
   function hintCase(hint) {
-    // console.log('he-he!');
     $hintText.text('');
     currentScore = currentScore - 1;
     $hintText.text(hint);
@@ -125,36 +126,26 @@ $(() => {
   }
 
   function optionsDisplay(array) {
-    $options.find('li').remove();
+    $options.find('button').remove();
     for(let i = 0; i < array.length; i++) {
-      const listElement = document.createElement('li');
-      listElement.innerHTML = array[i];
-      $options.append(listElement);
+      const $listElement = $('<button/>');
+      $listElement.text(array[i]);
+      $options.append($listElement);
     }
   }
 
   function startGame(id) {
     console.log(id);
     const currentChallenge = challengesLevel1[id];
-    // console.log(currentChallenge.hint);
     sentenceDisplay(currentChallenge.incomplete());
     optionsDisplay(currentChallenge.options);
-    $options.children().addClass('clickable');
-    $('.clickable').on('click', function() {
+    $options.children().on('click', function(e) {
       const userChioce = this.innerHTML;
-      checkTheAnswer(userChioce, currentChallenge, id);
-      this.classList.remove('clickable');
-      // this.removeClass('clickable');
-      // console.log(`${userChioce} was clicked`);
+      checkTheAnswer(userChioce, currentChallenge, id, e.target);
     });
-    // $options.children().on('click', function() {
-    //   const userChioce = this.innerHTML;
-    //   checkTheAnswer(userChioce, currentChallenge, id);
-    //   // console.log(`${userChioce} was clicked`);
-    // });
     $hintBtn.on('click', () => {
       hintCase(currentChallenge.hint);
-      console.log(currentChallenge.hint);
+      // console.log(currentChallenge.hint);
     });
   }
 
