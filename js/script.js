@@ -138,35 +138,6 @@ $(() => {
     }
     return tempArray;
   }
-  // const arrayOriginal = ['egy', 'ketto', 'harom', 'negy', 'Odonke'];
-  // // console.log(arrayOriginal.length);
-  //
-  // const arrayTemp = [];
-  //
-  // // return Int
-  // function guppi() {
-  //   return Math.floor(Math.random() * arrayOriginal.length);
-  // }
-  //
-  // function owl(owlInt) {
-  //   arrayTemp.push(arrayOriginal[owlInt]);
-  // }
-  //
-  //
-  // function frog(frogInt) {
-  //   arrayOriginal.splice(frogInt, 1);
-  // }
-  //
-  // while (arrayOriginal.length > 0) {
-  //   const guppiInt = guppi();
-  //   owl(guppiInt);
-  //   frog(guppiInt);
-  // }
-  //
-  // console.log(arrayOriginal);
-  // console.log(arrayTemp);
-
-
 
   // DISPLAY
   function sentenceDisplay(incomplete) {
