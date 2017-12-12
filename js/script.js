@@ -28,28 +28,33 @@ $(() => {
     };
   }
   // the instances
-  // SENTENCE 1
+  // SENTENCE 1 My kingdom for a horse!
   const sentence1 = new Sentence('"My kingdom for', '!"', 'a horse', ['a flamingo', 'an idiot', 'a spaniel'], 1);
   challengesLevel1.push(sentence1);
 
-  // SENTENCE 2
+  // SENTENCE 2 To be, or not to be
   const sentence2 = new Sentence('"To be,', 'not to be"', 'or',['and', 'by'], 1);
   challengesLevel1.push(sentence2);
 
+  // SENTENCE 3  That which we call a rose By any other name would smell as sweet;
+  const sentence3 = new Sentence('"That which we call', 'By any other name would smell as sweet"', 'a rose',['a chicken', 'a daffodil', 'a fennel'], 1);
+  challengesLevel1.push(sentence3);
+
   // ////I need a function to decide if the answer the user chose is or not the right one
-  function checkTheAnswer(userChoice) {
-    if(userChoice === sentence1.rightAnswer) {
-      caseCorrect();
+  //altered
+  function checkTheAnswer(userChoice, currentChallenge, id) {
+    if(userChoice === currentChallenge.rightAnswer) {
+      caseCorrect(currentChallenge, id);
     } else {
       caseIncorrect();
     }
   }
 
-  function next() {
-    console.log('next');
-    sentenceDisplay(challengesLevel1[1].incomplete());
-    optionsDisplay(challengesLevel1[1].options);
-  }
+  // function next(currentChallenge) {
+  //   console.log('next');
+  //   sentenceDisplay(challengesLevel1[1].incomplete());
+  //   optionsDisplay(challengesLevel1[1].options);
+  // }
 
   //// If the user clicked the RIGHT answer
   // - the correct, completed sentence becomes visible in the <h2>
@@ -57,14 +62,15 @@ $(() => {
   // - The happy mask is 'active'
   // - scores increased by the worth of the current sentence
   // - the next sentence becomes available
-  function caseCorrect() {
+  function caseCorrect(currentChallenge, id) {
     // console.log('correct');
     currentScore = currentScore + 1;
     $score.text(currentScore);
-    sentenceDisplay(challengesLevel1[0].complete());
+    sentenceDisplay(currentChallenge.complete());
     $happyMask.addClass('active');
     setTimeout(() => {
-      next();
+      // next(currentChallenge);
+      startGame(id + 1);
       $happyMask.removeClass('active');
     }, 3000);
   }
@@ -88,6 +94,7 @@ $(() => {
   //// If the user clicked the HINT button
   // - scores decreased by 1 (always by 1) for using help. Negative scores are possible.
   // - the hint information becomes visible on screen
+  // - maybe the prompt not only gives helping info but insults the player (with shakespeare's words) for his lack of knowledge. Ex.: This is in Richard III, you puking flap-dragon!
 
   // RANDOM
   // I need the options in a random order, it's coming hopefully soon
@@ -106,14 +113,29 @@ $(() => {
     }
   }
 
-  sentenceDisplay(challengesLevel1[0].incomplete());
-  optionsDisplay(challengesLevel1[0].options);
+  function startGame(id) {
+    const currentChallenge = challengesLevel1[id];
+    sentenceDisplay(currentChallenge.incomplete());
+    optionsDisplay(currentChallenge.options);
+    $options.children().on('click', function() {
+      const userChioce = this.innerHTML;
+      checkTheAnswer(userChioce, currentChallenge, id);
+      // console.log(`${userChioce} was clicked`);
+    });
+  }
 
-  $options.children().on('click', function() {
-    const userChioce = this.innerHTML;
-    checkTheAnswer(userChioce);
-    // console.log(`${userChioce} was clicked`);
-  });
+  startGame(0);
+
+  //go
+  // sentenceDisplay(challengesLevel1[0].incomplete());
+  // optionsDisplay(challengesLevel1[0].options);
+
+  //go
+  // $options.children().on('click', function() {
+  //   const userChioce = this.innerHTML;
+  //   checkTheAnswer(userChioce);
+  //   // console.log(`${userChioce} was clicked`);
+  // });
 
 
 ///////////
