@@ -2,6 +2,7 @@ $(() => {
 /////////
 // Some global variables
   let currentScore = 0;
+  // let currentChallenge = 0;
 
   const $h2 = $('h2');
   const $options = $('#options');
@@ -58,7 +59,10 @@ $(() => {
   function theEnd() {
     // console.log('the end');
     $options.find('button').remove();
-    $hintBtn.css('display', 'none');
+    // $hintBtn.css('display', 'none');
+    $hintBtn.attr('disabled', 'disabled');
+    $hintBtn.html('');
+    // $(target).attr('disabled', 'disabled');
     sentenceDisplay(`All's Well That Ends Well`);
   }
 
@@ -101,10 +105,11 @@ $(() => {
     currentScore = --currentScore;
     $score.text(currentScore);
     $sadMask.addClass('active');
-    $hintBtn.addClass('active');
+    // $hintBtn.addClass('active');
+    $('#hint-box').addClass('active');
     setTimeout(() => {
       $sadMask.removeClass('active');
-      $hintBtn.removeClass('active');
+      $('#hint-box').removeClass('active');
     }, 2000);
   }
 
@@ -114,7 +119,7 @@ $(() => {
   // - maybe the prompt not only gives helping info but insults the player (with shakespeare's words) for his lack of knowledge. Ex.: This is in Richard III, you puking flap-dragon!
   function hintCase(hint) {
     $hintText.text('');
-    currentScore = --currentScore;
+    currentScore -= 1;
     $score.text(currentScore);
     $hintText.text(hint);
   }

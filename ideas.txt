@@ -1,0 +1,28 @@
+01 To be, or not to be
+// `It's in Hamlet, you artless boar-pig!`
+'or'
+['and', 'by']
+
+02 My kingdom for a horse!
+//`It's in Richard III, you fool-born malt-worm!`
+'a horse'
+['a flamingo', 'an idiot', 'a spaniel']
+
+03 That which we call a rose By any other name would smell as sweet
+//`It's in Romeo And Juliet, you puking flap-dragon!`
+'a rose'
+['a chicken', 'a daffodil', 'a fennel']
+---------------
+
+04 When shall wee three meet again?
+//
+'meet'
+['pee', 'see', 'greet']
+
+----------------
+ethiop's ear
+
+LAST This is a tale told by an idiot
+//
+'an idiot'
+['pee', 'see', 'greet']

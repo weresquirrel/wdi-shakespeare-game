@@ -20,7 +20,7 @@ body {
 h1 {
   text-align: center;
   font-size: 23px;
-  padding: 8px 0 !important;
+  padding: 10px 0 !important;
   margin: 0;
   padding: 0;
   font-family: "Times New Roman";
@@ -49,10 +49,31 @@ h1 {
 #score img {
   width: 90px;
   height: auto;
+  padding-top: 20px;
 }
 
 .active {
-  border: 1px solid black;
+  /*border: 1px solid black;*/
+  /*background-color: red;*/
+  /*background: url("../pictures/leftCurtain.png") no-repeat top left;*/
+}
+
+#happy {
+  padding-left: 20px;
+}
+#sad {
+  padding-right: 20px;
+}
+
+#happy.active{
+  background: url("../pictures/activeLeft.png") no-repeat top left;
+  background-size: 40px;
+  /*width: 92px;
+  height: auto;*/
+}
+#sad.active{
+  background: url("../pictures/activeRight.png") no-repeat top right;
+  background-size: 40px;
 }
 
 #menu {
@@ -103,6 +124,15 @@ footer {
   /*justify-content: center;*/
   /*I'm not sure about the height*/
   /*height: 25vh;*/
+}
+
+#hint-box {
+  padding-top: 30px;
+}
+
+#hint-box.active {
+  background: url("../pictures/activeAbove.png") no-repeat top center;
+  background-size: 90px;
 }
 
 footer button {
