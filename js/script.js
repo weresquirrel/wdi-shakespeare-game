@@ -46,10 +46,10 @@ $(() => {
   challengesLevel1.push(sentence3);
 
   // ////I need a function to decide if the answer the user chose is or not the right one
-  function checkTheAnswer(userChoice, currentChallenge, id, target) {
+  function checkTheAnswer(userChoice, currentChallenge, target) {
     // console.log("t", target);
     if(userChoice === currentChallenge.rightAnswer) {
-      caseCorrect(currentChallenge, id, target);
+      caseCorrect(currentChallenge, target);
     } else {
       caseIncorrect(target);
     }
@@ -72,16 +72,17 @@ $(() => {
   // - The happy mask is 'active'
   // - scores increased by the worth of the current sentence
   // - the next sentence becomes available
-  function caseCorrect(currentChallenge, currentChallengeNum, target) {
+  function caseCorrect(currentChallenge, target) {
     // console.log('correct');
     currentScore += currentChallenge.worth;
     $(target).attr('disabled', 'disabled');
     $score.text(currentScore);
     sentenceDisplay(currentChallenge.complete());
     $happyMask.addClass('active');
+    currentChallengeNum += 1;
     setTimeout(() => {
       // next(currentChallenge);
-      currentChallengeNum += 1;
+
       // I should check here if the id is greater than it would be possible in the array
       if(currentChallengeNum > challengesLevel1.length - 1) {
         theEnd();
@@ -102,8 +103,8 @@ $(() => {
   function caseIncorrect(target) {
     // console.log('incorrect');
     $(target).attr('disabled', 'disabled');
-    currentScore -= 1;
-    // currentScore -= currentChallenge.worth;
+    // currentScore -= 1;
+    currentScore -= challengesLevel1[currentChallengeNum].worth;
     $score.text(currentScore);
     $sadMask.addClass('active');
     // $hintBtn.addClass('active');
@@ -160,27 +161,27 @@ $(() => {
     }
   }
 
+  // $hintBtn.on('click', () => {
+  //   hintCase();
+  //   // console.log(challengesLevel1[currentChallengeNum].hint);
+  // });
+
   $hintBtn.on('click', () => {
+    console.log(currentChallengeNum);
     hintCase(challengesLevel1[currentChallengeNum].hint);
-    // console.log(currentChallenge.hint);
+    // console.log(challengesLevel1[currentChallengeNum].hint);
   });
 
   function startGame(currentChallengeNum) {
     console.log(currentChallengeNum);
     const currentChallenge = challengesLevel1[currentChallengeNum];
     sentenceDisplay(currentChallenge.incomplete());
-    // here supposed to be randomised the original array
     const tempArray = randomizeArray(currentChallenge.options);
     optionsDisplay(tempArray);
-    // optionsDisplay(currentChallenge.options);
     $options.children().on('click', function(e) {
       const userChoice = this.innerHTML;
-      checkTheAnswer(userChoice, currentChallenge, currentChallengeNum, e.target);
+      checkTheAnswer(userChoice, currentChallenge, e.target);
     });
-    // $hintBtn.on('click', () => {
-    //   hintCase(currentChallenge.hint);
-    //   // console.log(currentChallenge.hint);
-    // });
   }
 
   startGame(currentChallengeNum);
