@@ -161,11 +161,6 @@ $(() => {
     }
   }
 
-  // $hintBtn.on('click', () => {
-  //   hintCase();
-  //   // console.log(challengesLevel1[currentChallengeNum].hint);
-  // });
-
   $hintBtn.on('click', () => {
     console.log(currentChallengeNum);
     hintCase(challengesLevel1[currentChallengeNum].hint);
