@@ -11,7 +11,7 @@ $(() => {
   const $hintText = $('#hint');
   const $hintBtn = $('button');
   $score.text(currentScore);
-  let challengesLevel1 = [];
+  const challengesLevel1 = [];
 
   // THE PROTOTYPE
   function Sentence(sentenceStart, sentenceFinish, rightAnswer, wrongAnswers, hint, worth){
@@ -162,8 +162,8 @@ $(() => {
     optionsDisplay(tempArray);
     // optionsDisplay(currentChallenge.options);
     $options.children().on('click', function(e) {
-      const userChioce = this.innerHTML;
-      checkTheAnswer(userChioce, currentChallenge, id, e.target);
+      const userChoice = this.innerHTML;
+      checkTheAnswer(userChoice, currentChallenge, id, e.target);
     });
     $hintBtn.on('click', () => {
       hintCase(currentChallenge.hint);
