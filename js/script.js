@@ -2,7 +2,7 @@ $(() => {
 /////////
 // Some global variables
   let currentScore = 0;
-  // let currentChallenge = 0;
+  let currentChallengeNum = 0;
 
   const $h2 = $('h2');
   const $options = $('#options');
@@ -72,21 +72,21 @@ $(() => {
   // - The happy mask is 'active'
   // - scores increased by the worth of the current sentence
   // - the next sentence becomes available
-  function caseCorrect(currentChallenge, id, target) {
+  function caseCorrect(currentChallenge, currentChallengeNum, target) {
     // console.log('correct');
-    currentScore = ++currentScore;
+    currentScore += currentChallenge.worth;
     $(target).attr('disabled', 'disabled');
     $score.text(currentScore);
     sentenceDisplay(currentChallenge.complete());
     $happyMask.addClass('active');
     setTimeout(() => {
       // next(currentChallenge);
-      id = ++id;
+      currentChallengeNum += 1;
       // I should check here if the id is greater than it would be possible in the array
-      if(id > challengesLevel1.length - 1) {
+      if(currentChallengeNum > challengesLevel1.length - 1) {
         theEnd();
       } else {
-        startGame(id);
+        startGame(currentChallengeNum);
       }
       $hintText.text('');
       $happyMask.removeClass('active');
@@ -102,7 +102,8 @@ $(() => {
   function caseIncorrect(target) {
     // console.log('incorrect');
     $(target).attr('disabled', 'disabled');
-    currentScore = --currentScore;
+    currentScore -= 1;
+    // currentScore -= currentChallenge.worth;
     $score.text(currentScore);
     $sadMask.addClass('active');
     // $hintBtn.addClass('active');
@@ -159,9 +160,14 @@ $(() => {
     }
   }
 
-  function startGame(id) {
-    console.log(id);
-    const currentChallenge = challengesLevel1[id];
+  $hintBtn.on('click', () => {
+    hintCase(challengesLevel1[currentChallengeNum].hint);
+    // console.log(currentChallenge.hint);
+  });
+
+  function startGame(currentChallengeNum) {
+    console.log(currentChallengeNum);
+    const currentChallenge = challengesLevel1[currentChallengeNum];
     sentenceDisplay(currentChallenge.incomplete());
     // here supposed to be randomised the original array
     const tempArray = randomizeArray(currentChallenge.options);
@@ -169,14 +175,14 @@ $(() => {
     // optionsDisplay(currentChallenge.options);
     $options.children().on('click', function(e) {
       const userChoice = this.innerHTML;
-      checkTheAnswer(userChoice, currentChallenge, id, e.target);
+      checkTheAnswer(userChoice, currentChallenge, currentChallengeNum, e.target);
     });
-    $hintBtn.on('click', () => {
-      hintCase(currentChallenge.hint);
-      // console.log(currentChallenge.hint);
-    });
+    // $hintBtn.on('click', () => {
+    //   hintCase(currentChallenge.hint);
+    //   // console.log(currentChallenge.hint);
+    // });
   }
 
-  startGame(0);
+  startGame(currentChallengeNum);
 ///////////
 });
