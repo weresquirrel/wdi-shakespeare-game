@@ -41,7 +41,7 @@ $(() => {
   challengesLevel1.push(sentence2);
 
   // SENTENCE 3 That which we call a rose By any other name would smell as sweet;
-  const sentence3 = new Sentence('"That which we call', 'By any other name would smell as sweet"', 'a rose',['a chicken', 'a daffodil', 'a fennel'], `It's in Romeo And Juliet, you puking flap-dragon!`, 1);
+  const sentence3 = new Sentence('"That which we call', '<br/>By any other name would smell as sweet"', 'a rose',['a chicken', 'a daffodil', 'a fennel'], `It's in Romeo And Juliet, you puking flap-dragon!`, 1);
   challengesLevel1.push(sentence3);
 
   // ////I need a function to decide if the answer the user chose is or not the right one
@@ -142,7 +142,7 @@ $(() => {
 
   // DISPLAY
   function sentenceDisplay(incomplete) {
-    $h2.text(incomplete);
+    $h2.html(incomplete);
   }
 
   function optionsDisplay(array) {
