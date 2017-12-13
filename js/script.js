@@ -114,7 +114,8 @@ $(() => {
   // - maybe the prompt not only gives helping info but insults the player (with shakespeare's words) for his lack of knowledge. Ex.: This is in Richard III, you puking flap-dragon!
   function hintCase(hint) {
     $hintText.text('');
-    currentScore = currentScore - 1;
+    currentScore = --currentScore;
+    $score.text(currentScore);
     $hintText.text(hint);
   }
 

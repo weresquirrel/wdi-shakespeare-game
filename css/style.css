@@ -3,11 +3,14 @@
 }
 
 body {
-  /*background-color: lightblue;*/
-  background:lightblue url("../pictures/rightCurtain.png") no-repeat top right;
+  /*background-color: #e4dbb2;*/
+  /*background-color: #dbd4b4;*/
+  background:#dbd4b4 url("../pictures/rightCurtain.png") no-repeat top right;
   background-size: contain;
   margin: 0;
   padding: 0;
+  font-family: "Arial";
+  text-transform: uppercase;
 }
 #wrap {
   background: url("../pictures/leftCurtain.png") no-repeat top left;
@@ -20,6 +23,8 @@ h1 {
   padding: 8px 0 !important;
   margin: 0;
   padding: 0;
+  font-family: "Times New Roman";
+  text-transform: none;
 }
 
 #info-bar {
@@ -29,6 +34,7 @@ h1 {
 
 #level {
   flex: 1;
+  padding-left: 5%;
 }
 
 #level span {
@@ -52,11 +58,14 @@ h1 {
 #menu {
   flex: 1;
   text-align: right;
+  padding-right: 5%;
 }
 
 h2 {
   text-align: center;
   font-size: 32px;
+  font-family: "Times New Roman";
+  text-transform: none;
 }
 
 #options {
@@ -68,23 +77,20 @@ h2 {
 }
 
 #options button {
-  list-style: none;
-  /*height: 10px;*/
+  /*list-style: none;*/
   padding: 20px;
   border: 1px solid black;
-  /*display: inline-block;*/
   background-color: white;
   margin-right: 8px;
+  border-radius: 12px;
 }
 
 #options button:hover {
   color: lightblue;
-  /*font-weight: bold;*/
 }
 
 #options button:disabled {
   color: silver;
-  /*font-weight: bold;*/
 }
 
 footer {
@@ -103,7 +109,6 @@ footer button {
   border: none;
   width: 230px;
   height: 113px;
-  /*background-color: red;*/
   background: url("../pictures/prompt.png") no-repeat bottom center;
   background-size: cover;
   padding-bottom: 40px;
@@ -117,9 +122,17 @@ button:focus {
   outline: none;
 }
 
+button {
+  font-family: "Arial";
+}
+
 footer p {
   height: 40px;
   padding: 10px 0;
   display: block;
+  text-transform: none;
+  font-family: "Times New Roman";
+  font-size: 18px;
+  letter-spacing: 0.5pt;
   /*background-color: yellow;*/
 }
