@@ -117,10 +117,10 @@ $(() => {
     sentenceDisplay(`Level ${num} is done.`);
     if(num === 1) {
       $hintText.text('Tou art getting Bardish!');
-      console.log('Tou art getting Bardish!');
+      // console.log('Tou art getting Bardish!');
     } else if(num === 2) {
       $hintText.text('"What’s done cannot be undone"');
-      console.log('"What’s done cannot be undone"');
+      // console.log('"What’s done cannot be undone"');
     }
   }
 
@@ -250,17 +250,17 @@ $(() => {
       $hardness.text('easy');
     } else if(currentLevel === challengesLevel2) {
       $hardness.text('medium');
-      const $listE = $('<li>');
-      $listE.text('easy');
-      $completed.append($listE);
+      // const $listE = $('<li>');
+      // $listE.text('easy');
+      // $completed.append($listE);
     } else if(currentLevel === challengesLevel3) {
       $hardness.text('challenging');
-      const $listE = $('<li>');
-      $listE.text('medium');
-      const $listE2 = $('<li>');
-      $listE.text('easy');
-      $completed.append($listE);
-      $completed.append($listE2);
+      // const $listE = $('<li>');
+      // $listE.text('medium');
+      // const $listE2 = $('<li>');
+      // $listE.text('easy');
+      // $completed.append($listE);
+      // $completed.append($listE2);
     }
   }
 
