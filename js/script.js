@@ -106,6 +106,7 @@ $(() => {
     $options.find('button').remove();
     $hintBtn.attr('disabled', 'disabled');
     $hintBtn.html('');
+    $hintText.text('Nothing can seem foul to those who win.');
     sentenceDisplay(`All's Well That Ends Well`);
   }
 
