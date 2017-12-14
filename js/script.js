@@ -7,11 +7,13 @@ $(() => {
 
   const $h2 = $('h2');
   const $options = $('#options');
+  const $completed = $('#menu').find('ul');
   const $score = $('#score').find('p').find('span');
   const $happyMask = $('#happy');
   const $sadMask = $('#sad');
   const $hintText = $('#hint');
   const $hintBtn = $('button');
+  const $hardness = $('#level').find('.level');
   $score.text(currentScore);
   const challengesLevel1 = [];
   const challengesLevel2 = [];
@@ -121,8 +123,6 @@ $(() => {
       console.log('"What’s done cannot be undone"');
     }
   }
-
-
 
 
   //// If the user clicked the RIGHT answer
@@ -243,10 +243,32 @@ $(() => {
     // console.log(challengesLevel1[currentChallengeNum].hint);
   });
 
+  ///display the current level
+  function levelDisplay() {
+    $completed.find('li').remove();
+    if(currentLevel === challengesLevel1) {
+      $hardness.text('easy');
+    } else if(currentLevel === challengesLevel2) {
+      $hardness.text('medium');
+      const $listE = $('<li>');
+      $listE.text('easy');
+      $completed.append($listE);
+    } else if(currentLevel === challengesLevel3) {
+      $hardness.text('challenging');
+      const $listE = $('<li>');
+      $listE.text('medium');
+      const $listE2 = $('<li>');
+      $listE.text('easy');
+      $completed.append($listE);
+      $completed.append($listE2);
+    }
+  }
+
   function startGame(currentArray, currentChallengeNum) {
     // console.log(currentArray);
     // console.log(currentChallengeNum);
     $hintText.text('');
+    levelDisplay();
     const currentChallenge = currentArray[currentChallengeNum];
     sentenceDisplay(currentChallenge.incomplete());
     const tempArray = randomizeArray(currentChallenge.options);
