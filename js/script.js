@@ -87,12 +87,12 @@ $(() => {
 
 
   // ////I need a function to decide if the answer the user chose is or not the right one
-  function checkTheAnswer(userChoice, currentChallenge, target) {
+  function checkTheAnswer(userChoice, currentArray, currentChallenge, target) {
     // console.log("t", target);
     if(userChoice === currentChallenge.rightAnswer) {
-      caseCorrect(currentChallenge, target);
+      caseCorrect(currentArray, currentChallenge, target);
     } else {
-      caseIncorrect(target);
+      caseIncorrect(currentArray, target);
     }
   }
 
@@ -113,7 +113,7 @@ $(() => {
   // - The happy mask is 'active'
   // - scores increased by the worth of the current sentence
   // - the next sentence becomes available
-  function caseCorrect(currentChallenge, target) {
+  function caseCorrect(currentArray, currentChallenge, target) {
     // console.log('correct');
     currentScore += currentChallenge.worth;
     $(target).attr('disabled', 'disabled');
@@ -122,13 +122,23 @@ $(() => {
     $happyMask.addClass('active');
     currentChallengeNum += 1;
     setTimeout(() => {
-      // next(currentChallenge);
 
-      // I should check here if the id is greater than it would be possible in the array
-      if(currentChallengeNum > challengesLevel1.length - 1) {
+      if(currentArray === challengesLevel3 && currentChallengeNum > currentArray.length - 1) {
         theEnd();
+      } else if(currentArray === challengesLevel2 && currentChallengeNum > currentArray.length - 1) {
+        console.log('level 2 completed');
+        setTimeout(() => {
+          currentChallengeNum = 0;
+          startGame(challengesLevel3, 0);
+        }, 2000);
+      } else if(currentArray === challengesLevel1 && currentChallengeNum > currentArray.length - 1) {
+        console.log('level 1 completed');
+        setTimeout(() => {
+          currentChallengeNum = 0;
+          startGame(challengesLevel2, 0);
+        }, 2000);
       } else {
-        startGame(currentChallengeNum);
+        startGame(currentArray, currentChallengeNum);
       }
       $hintText.text('');
       $happyMask.removeClass('active');
@@ -141,11 +151,11 @@ $(() => {
   // - the hint button is 'waving' like: 'hey, I'm here, use me'
   // - next sentence is not available until the click on the right answer
   // - the already chosen wrong answer is not clickable anymore, it's still there but disabled.
-  function caseIncorrect(target) {
+  function caseIncorrect(currentArray, target) {
     // console.log('incorrect');
     $(target).attr('disabled', 'disabled');
     // currentScore -= 1;
-    currentScore -= challengesLevel1[currentChallengeNum].worth;
+    currentScore -= currentArray[currentChallengeNum].worth;
     $score.text(currentScore);
     $sadMask.addClass('active');
     // $hintBtn.addClass('active');
@@ -208,18 +218,19 @@ $(() => {
     // console.log(challengesLevel1[currentChallengeNum].hint);
   });
 
-  function startGame(currentChallengeNum) {
+  function startGame(currentArray, currentChallengeNum) {
+    console.log(currentArray);
     console.log(currentChallengeNum);
-    const currentChallenge = challengesLevel1[currentChallengeNum];
+    const currentChallenge = currentArray[currentChallengeNum];
     sentenceDisplay(currentChallenge.incomplete());
     const tempArray = randomizeArray(currentChallenge.options);
     optionsDisplay(tempArray);
     $options.children().on('click', function(e) {
       const userChoice = this.innerHTML;
-      checkTheAnswer(userChoice, currentChallenge, e.target);
+      checkTheAnswer(userChoice, currentArray, currentChallenge, e.target);
     });
   }
 
-  startGame(currentChallengeNum);
+  startGame(challengesLevel1, 0);
 ///////////
 });
