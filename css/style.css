@@ -9,7 +9,9 @@ body {
   background-size: contain;
   margin: 0;
   padding: 0;
-  font-family: "Arial";
+  /*font-family: "Arial";*/
+  font-family: "Trebuchet MS";
+  letter-spacing: 0.5pt;
   text-transform: uppercase;
 }
 #wrap {
@@ -164,7 +166,8 @@ button:focus {
 }
 
 button {
-  font-family: "Arial";
+  font-family: "Trebuchet MS";
+  /*letter-spacing: 0.5pt;*/
 }
 
 footer p {

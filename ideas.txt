@@ -48,3 +48,9 @@ LAST This is a tale told by an idiot
 //
 'an idiot'
 ['a horse', 'a spaniel', 'a spirit']
+
+
+-----------------------
+And either victory, or else a grave.
+
+Nothing can seem foul to those who win. - Henry IV Part 1
