@@ -100,9 +100,9 @@ h1 {
 
 h2 {
   text-align: center;
-  /*font-size: 32px;*/
+  font-size: 32px;
   /*font-size: 2.000em;*/
-  font-size: 4vw;
+  /*font-size: 4vw;*/
   font-family: "Times New Roman";
   text-transform: none;
   min-height: 72px;
@@ -183,14 +183,15 @@ footer p {
   display: block;
   text-transform: none;
   font-family: "Times New Roman";
-  /*font-size: 18px;*/
-  font-size: 2.2vw;
+  font-size: 18px;
+  /*font-size: 2.2vw;*/
   letter-spacing: 0.5pt;
   margin: 0;
   /*background-color: yellow;*/
 }
 
 @media screen and (max-width: 700px) {
+/*@media screen and (max-height: 580px) {*/
   body{
     background-color: red;
   }
@@ -224,9 +225,21 @@ footer p {
   }
 
   footer button {
-
     width: 130px;
-    min-height: auto;
+    min-height: 65px;
+    padding-bottom: 20px;
+  }
 
+  #options button {
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  body, #wrap {
+    background: none;
+  }
+  h2 {
+    font-size: 6.8vw;
   }
 }
