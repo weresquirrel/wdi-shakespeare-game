@@ -19,10 +19,32 @@
 'meet'
 ['pee', 'see', 'greet']
 
+05 All the world's a stage,
+And all the men and women merely players - As You Like It
+'stage'
+['tavern', 'circus', 'theatre']
+
+06 Lord, what fools these mortals be! - A Midsummer Night's Dream
+'fools'
+['cools', 'gallants', 'favoured']
 ----------------
 ethiop's ear
+
+07 The red plague rid you,
+For learning me your language! - The Tempest
+'red'
+['black', 'green', 'pale']
+
+08 I love long life better than figs. - Anthony and Cleopatra
+'figs'
+['unicorns', 'tokens']
+
+LAST-1 Alas, poor Yorick!
+I knew him, Horatio
+'Horatio'
+['well', 'slightly']
 
 LAST This is a tale told by an idiot
 //
 'an idiot'
-['pee', 'see', 'greet']
+['a horse', 'a spaniel', 'a spirit']
