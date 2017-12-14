@@ -4,6 +4,7 @@ $(() => {
   let currentScore = 0;
   let currentChallengeNum = 0;
 
+
   const $h2 = $('h2');
   const $options = $('#options');
   const $score = $('#score').find('p').find('span');
@@ -15,6 +16,8 @@ $(() => {
   const challengesLevel1 = [];
   const challengesLevel2 = [];
   const challengesLevel3 = [];
+
+  let currentLevel = challengesLevel1;
 
   // THE PROTOTYPE
   function Sentence(sentenceStart, sentenceFinish, rightAnswer, wrongAnswers, hint, worth){
@@ -107,6 +110,8 @@ $(() => {
     sentenceDisplay(`All's Well That Ends Well`);
   }
 
+  ////Level completed
+
   //// If the user clicked the RIGHT answer
   // - the correct, completed sentence becomes visible in the <h2>
   // - all options fading out/become 'disabled'/disappear - I don't know yet, I think I should see this case and see what would be the nice to experience as a user
@@ -114,7 +119,6 @@ $(() => {
   // - scores increased by the worth of the current sentence
   // - the next sentence becomes available
   function caseCorrect(currentArray, currentChallenge, target) {
-    // console.log('correct');
     currentScore += currentChallenge.worth;
     $(target).attr('disabled', 'disabled');
     $score.text(currentScore);
@@ -122,20 +126,21 @@ $(() => {
     $happyMask.addClass('active');
     currentChallengeNum += 1;
     setTimeout(() => {
-
       if(currentArray === challengesLevel3 && currentChallengeNum > currentArray.length - 1) {
         theEnd();
       } else if(currentArray === challengesLevel2 && currentChallengeNum > currentArray.length - 1) {
         console.log('level 2 completed');
         setTimeout(() => {
           currentChallengeNum = 0;
-          startGame(challengesLevel3, 0);
+          currentLevel = challengesLevel3;
+          startGame(currentLevel, currentChallengeNum);
         }, 2000);
       } else if(currentArray === challengesLevel1 && currentChallengeNum > currentArray.length - 1) {
         console.log('level 1 completed');
         setTimeout(() => {
           currentChallengeNum = 0;
-          startGame(challengesLevel2, 0);
+          currentLevel = challengesLevel2;
+          startGame(currentLevel, currentChallengeNum);
         }, 2000);
       } else {
         startGame(currentArray, currentChallengeNum);
@@ -214,7 +219,7 @@ $(() => {
 
   $hintBtn.on('click', () => {
     console.log(currentChallengeNum);
-    hintCase(challengesLevel1[currentChallengeNum].hint);
+    hintCase(currentLevel[currentChallengeNum].hint);
     // console.log(challengesLevel1[currentChallengeNum].hint);
   });
 
@@ -231,6 +236,7 @@ $(() => {
     });
   }
 
-  startGame(challengesLevel1, 0);
+  // startGame(challengesLevel1, 0);
+  startGame(currentLevel, currentChallengeNum);
 ///////////
 });
