@@ -59,7 +59,7 @@ $(() => {
 
   // SENTENCE 5 All the world's a stage, And all the men and women merely players
   // `It's in As You Like It, you artless boar-pig!`
-  const sentence5 = new Sentence(`"All the world's`, ', And all the men and women merely players"', 'a stage',['a tavern', 'a circus', 'a theatre'], `It's in As You Like It, you artless boar-pig!`, 2);
+  const sentence5 = new Sentence(`"All the world's`, ', <br/>And all the men and women merely players"', 'a stage',['a tavern', 'a circus', 'a theatre'], `It's in As You Like It, you artless boar-pig!`, 2);
   challengesLevel2.push(sentence5);
 
   // SENTENCE 6 Lord, what fools these mortals be!
@@ -70,7 +70,7 @@ $(() => {
   //LEVEL 03------------------------------------
   // SENTENCE 7 The red plague rid you, For learning me your language!
   // `It's in The Tempest, you artless boar-pig!`
-  const sentence7 = new Sentence('"The', 'plague rid you, For learning me your language!"', 'red',['black', 'green', 'pale'], `It's in The Tempest, you artless boar-pig!`, 3);
+  const sentence7 = new Sentence('"The', 'plague rid you, <br/>For learning me your language!"', 'red',['black', 'green', 'pale'], `It's in The Tempest, you artless boar-pig!`, 3);
   challengesLevel3.push(sentence7);
 
   // SENTENCE 8 I love long life better than figs.
@@ -80,7 +80,7 @@ $(() => {
 
   // SENTENCE 9 Alas, poor Yorick! I knew him, Horatio
   // `It's in Hamlet, you artless boar-pig!`
-  const sentence9 = new Sentence('"Alas, poor Yorick! I knew him,', '"', 'Horatio',['well', 'slightly'], `It's in Hamlet, you artless boar-pig!`, 3);
+  const sentence9 = new Sentence('"Alas, poor Yorick! <br/>I knew him,', '"', 'Horatio',['well', 'slightly'], `It's in Hamlet, you artless boar-pig!`, 3);
   challengesLevel3.push(sentence9);
 
   // SENTENCE 10 This is a tale told by an idiot
@@ -93,7 +93,7 @@ $(() => {
   function checkTheAnswer(userChoice, currentArray, currentChallenge, target) {
     // console.log("t", target);
     if(userChoice === currentChallenge.rightAnswer) {
-      caseCorrect(currentArray, currentChallenge, target);
+      caseCorrect(currentArray, currentChallenge);
     } else {
       caseIncorrect(currentArray, target);
     }
@@ -112,7 +112,14 @@ $(() => {
     $options.find('button').remove();
     $hintBtn.attr('disabled', 'disabled');
     $hintBtn.html('');
-    sentenceDisplay(`Level ${num} is completed.`);
+    sentenceDisplay(`Level ${num} is done.`);
+    if(num === 1) {
+      $hintText.text('Tou art getting Bardish!');
+      console.log('Tou art getting Bardish!');
+    } else if(num === 2) {
+      $hintText.text('"What’s done cannot be undone"');
+      console.log('"What’s done cannot be undone"');
+    }
   }
 
 
@@ -124,9 +131,10 @@ $(() => {
   // - The happy mask is 'active'
   // - scores increased by the worth of the current sentence
   // - the next sentence becomes available
-  function caseCorrect(currentArray, currentChallenge, target) {
+  function caseCorrect(currentArray, currentChallenge) {
     currentScore += currentChallenge.worth;
-    $(target).attr('disabled', 'disabled');
+    // $(target).attr('disabled', 'disabled');
+    $options.children().attr('disabled', 'disabled');
     $score.text(currentScore);
     sentenceDisplay(currentChallenge.complete());
     $happyMask.addClass('active');
@@ -143,7 +151,7 @@ $(() => {
           $hintBtn.removeAttr('disabled');
           $hintBtn.html('Hint!');
           startGame(currentLevel, currentChallengeNum);
-        }, 3000);
+        }, 4000);
       } else if(currentArray === challengesLevel1 && currentChallengeNum > currentArray.length - 1) {
         console.log('level 1 completed');
         levelCompleted(1);
@@ -153,11 +161,11 @@ $(() => {
           $hintBtn.removeAttr('disabled');
           $hintBtn.html('Hint!');
           startGame(currentLevel, currentChallengeNum);
-        }, 3000);
+        }, 4000);
       } else {
         startGame(currentArray, currentChallengeNum);
       }
-      $hintText.text('');
+      // $hintText.text('');
       $happyMask.removeClass('active');
     }, 3000);
   }
@@ -230,14 +238,15 @@ $(() => {
   }
 
   $hintBtn.on('click', () => {
-    console.log(currentChallengeNum);
+    // console.log(currentChallengeNum);
     hintCase(currentLevel[currentChallengeNum].hint);
     // console.log(challengesLevel1[currentChallengeNum].hint);
   });
 
   function startGame(currentArray, currentChallengeNum) {
-    console.log(currentArray);
-    console.log(currentChallengeNum);
+    // console.log(currentArray);
+    // console.log(currentChallengeNum);
+    $hintText.text('');
     const currentChallenge = currentArray[currentChallengeNum];
     sentenceDisplay(currentChallenge.incomplete());
     const tempArray = randomizeArray(currentChallenge.options);
