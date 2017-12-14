@@ -101,16 +101,22 @@ $(() => {
 
   //// The End of the startGame
   function theEnd() {
-    // console.log('the end');
     $options.find('button').remove();
-    // $hintBtn.css('display', 'none');
     $hintBtn.attr('disabled', 'disabled');
     $hintBtn.html('');
-    // $(target).attr('disabled', 'disabled');
     sentenceDisplay(`All's Well That Ends Well`);
   }
 
   ////Level completed
+  function levelCompleted(num) {
+    $options.find('button').remove();
+    $hintBtn.attr('disabled', 'disabled');
+    $hintBtn.html('');
+    sentenceDisplay(`Level ${num} is completed.`);
+  }
+
+
+
 
   //// If the user clicked the RIGHT answer
   // - the correct, completed sentence becomes visible in the <h2>
@@ -130,18 +136,24 @@ $(() => {
         theEnd();
       } else if(currentArray === challengesLevel2 && currentChallengeNum > currentArray.length - 1) {
         console.log('level 2 completed');
+        levelCompleted(2);
         setTimeout(() => {
           currentChallengeNum = 0;
           currentLevel = challengesLevel3;
+          $hintBtn.removeAttr('disabled');
+          $hintBtn.html('Hint!');
           startGame(currentLevel, currentChallengeNum);
-        }, 2000);
+        }, 3000);
       } else if(currentArray === challengesLevel1 && currentChallengeNum > currentArray.length - 1) {
         console.log('level 1 completed');
+        levelCompleted(1);
         setTimeout(() => {
           currentChallengeNum = 0;
           currentLevel = challengesLevel2;
+          $hintBtn.removeAttr('disabled');
+          $hintBtn.html('Hint!');
           startGame(currentLevel, currentChallengeNum);
-        }, 2000);
+        }, 3000);
       } else {
         startGame(currentArray, currentChallengeNum);
       }
