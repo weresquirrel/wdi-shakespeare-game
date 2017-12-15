@@ -152,7 +152,7 @@ $(() => {
           $hintBtn.removeAttr('disabled');
           $hintBtn.html('Hint!');
           startGame(currentLevel, currentChallengeNum);
-        }, 4000);
+        }, 5000);
       } else if(currentArray === challengesLevel1 && currentChallengeNum > currentArray.length - 1) {
         console.log('level 1 completed');
         levelCompleted(1);
