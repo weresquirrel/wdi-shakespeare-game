@@ -46,38 +46,40 @@ $(() => {
   challengesLevel1.push(sentence1);
 
   // SENTENCE 2 My kingdom for a horse!
+  // `It's in Richard III, you fool-born malt-worm!`
   const sentence2 = new Sentence('"My kingdom for', '!"', 'a horse', ['a flamingo', 'an idiot', 'a spaniel'], `It's in Richard III, you fool-born malt-worm!`, 1);
   challengesLevel1.push(sentence2);
 
   // SENTENCE 3 That which we call a rose By any other name would smell as sweet;
+  // `It's in Romeo And Juliet, you puking flap-dragon!`
   const sentence3 = new Sentence('"That which we call', '<br/>By any other name would smell as sweet"', 'a rose',['a chicken', 'a daffodil', 'a fennel'], `It's in Romeo And Juliet, you puking flap-dragon!`, 1);
   challengesLevel1.push(sentence3);
 
   //LEVEL 02------------------------------------
   // SENTENCE 4 When shall wee three meet again?
-  // `It's in Macbeth, you artless boar-pig!`
-  const sentence4 = new Sentence('"When shall wee three', 'again?"', 'meet',['pee', 'see', 'greet'], `It's in Macbeth, you artless boar-pig!`, 2);
+  // `It's in Macbeth, you rump-fed ronyon!`
+  const sentence4 = new Sentence('"When shall wee three', 'again?"', 'meet',['pee', 'see', 'greet'], `It's in Macbeth, you rump-fed ronyon!`, 2);
   challengesLevel2.push(sentence4);
 
   // SENTENCE 5 All the world's a stage, And all the men and women merely players
-  // `It's in As You Like It, you artless boar-pig!`
-  const sentence5 = new Sentence(`"All the world's`, ', <br/>And all the men and women merely players"', 'a stage',['a tavern', 'a circus', 'a theatre'], `It's in As You Like It, you artless boar-pig!`, 2);
+  // `It's in As You Like It, you eater of broken meats!`
+  const sentence5 = new Sentence(`"All the world's`, ', <br/>And all the men and women merely players"', 'a stage',['a tavern', 'a circus', 'a theatre'], `It's in As You Like It, you eater of broken meats!`, 2);
   challengesLevel2.push(sentence5);
 
   // SENTENCE 6 Lord, what fools these mortals be!
-  // `It's in A Midsummer Night's Dream, you artless boar-pig!`
-  const sentence6 = new Sentence(`"Lord, what`, ', these mortals be!"', 'fools',['cools', 'gallants', 'favoured'], `It's in A Midsummer Night's Dream, you artless boar-pig!`, 2);
+  // `It's in A Midsummer Night's Dream, you goatish whoreson!`
+  const sentence6 = new Sentence(`"Lord, what`, ', these mortals be!"', 'fools',['cools', 'gallants', 'favoured'], `It's in A Midsummer Night's Dream, you goatish whoreson!`, 2);
   challengesLevel2.push(sentence6);
 
   //LEVEL 03------------------------------------
   // SENTENCE 7 The red plague rid you, For learning me your language!
-  // `It's in The Tempest, you artless boar-pig!`
-  const sentence7 = new Sentence('"The', 'plague rid you, <br/>For learning me your language!"', 'red',['black', 'green', 'pale'], `It's in The Tempest, you artless boar-pig!`, 3);
+  // `It's in The Tempest, you super-serviceable finical rouge!`
+  const sentence7 = new Sentence('"The', 'plague rid you, <br/>For learning me your language!"', 'red',['black', 'green', 'pale'], `It's in The Tempest, you super-serviceable finical rouge!`, 3);
   challengesLevel3.push(sentence7);
 
   // SENTENCE 8 I love long life better than figs.
-  // `It's in Anthony and Cleopatra, you artless boar-pig!`
-  const sentence8 = new Sentence('"I love long life better than', '."', 'figs',['unicorns', 'tokens'], `It's in Anthony and Cleopatra, you artless boar-pig!`, 3);
+  // `It's in Anthony and Cleopatra, lily-livered knave!`
+  const sentence8 = new Sentence('"I love long life better than', '."', 'figs',['unicorns', 'tokens'], `It's in Anthony and Cleopatra, you lily-livered knave!`, 3);
   challengesLevel3.push(sentence8);
 
   // SENTENCE 9 Alas, poor Yorick! I knew him, Horatio
@@ -86,8 +88,8 @@ $(() => {
   challengesLevel3.push(sentence9);
 
   // SENTENCE 10 This is a tale told by an idiot
-  // `It's in Macbeth, you artless boar-pig!`
-  const sentence10 = new Sentence('"This is a tale told by', '"', 'an idiot',['a horse', 'a spaniel', 'a spirit'], `It's in Macbeth, you artless boar-pig!`, 3);
+  // `It's in Macbeth, you bloody rascal / rump-fed ronyon/ !`
+  const sentence10 = new Sentence('"This is a tale told by', '"', 'an idiot',['a horse', 'a spaniel', 'a spirit'], `It's in Macbeth, you rump-fed ronyon!`, 3);
   challengesLevel3.push(sentence10);
 
 
