@@ -1,19 +1,19 @@
-#Shake Your Spear
+# Shake Your Spear
 An entertaining but also sligthly educational game to bring Shakeapeare closer to 21st century people, also showing off the funny, witty face of The Bard.
 
 I created this game as the first project at General Assembly's WDI course.
 
 ![screenshot](pictures/screenshot.jpg)
 
-##Installation and setup
-###Run Locally
+## Installation and setup
+### Run Locally
 Download or clone the [Github repo](https://github.com/weresquirrel/wdi-shakespeare-game).
 Open index.html in a browser.
 
-###View Online
+### View Online
 View on [Heroku](https://whispering-escarpment-91208.herokuapp.com/).
 
-##Technologies used
+## Technologies used
 To create this project I used the following technologies:
 
 * HTML5
@@ -25,7 +25,7 @@ To create this project I used the following technologies:
 * Heroku
 * Adobe Illustrator
 
-##Challenges Faced
+## Challenges Faced
 This was my first project as a coder. I made it in one week after only two weeks of learning to code.
 Planning the game itself was surprisingly easy. I focused on what the players' expectations would be, which gave me a useful skeleton I could start with and also guided me later on. 
 
@@ -35,7 +35,7 @@ I tried to make the UI responsive, but I wasn't able to manage that, even though
 
 I think the project represents quite well both my strong and weak points at this moment, hence this is an honest mirror I can use for further self-improvement.
 
-##Where next?
+## Where next?
 
 ### Improving the UI
 The game should be enjoyable on small devices and huge screens as well. Right now it looks nice only on laptops.
