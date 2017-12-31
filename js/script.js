@@ -1,13 +1,14 @@
 $(() => {
 /////////
 // Some global variables
+
+  // These 2 became global variables only because I had to move hintCase out of startGame and I got confused how to make these info available for every function that use them.
   let currentScore = 0;
   let currentChallengeNum = 0;
 
-
   const $h2 = $('h2');
   const $options = $('#options');
-  const $completed = $('#menu').find('ul');
+  // const $completed = $('#menu').find('ul');
   const $score = $('#score').find('p').find('span');
   const $happyMask = $('#happy');
   const $sadMask = $('#sad');
@@ -119,14 +120,13 @@ $(() => {
     $hintBtn.html('');
     sentenceDisplay(`Level ${num} is done.`);
     if(num === 1) {
-      $hintText.text('Tou art getting Bardish!');
-      // console.log('Tou art getting Bardish!');
+      $hintText.text('Thou art getting Bardish!');
+      // console.log('Thou art getting Bardish!');
     } else if(num === 2) {
       $hintText.text('"What’s done cannot be undone"');
       // console.log('"What’s done cannot be undone"');
     }
   }
-
 
   //// If the user clicked the RIGHT answer
   // - the correct, completed sentence becomes visible in the <h2>
@@ -138,6 +138,7 @@ $(() => {
     currentScore += currentChallenge.worth;
     // $(target).attr('disabled', 'disabled');
     $options.children().attr('disabled', 'disabled');
+    $hintBtn.attr('disabled', 'disabled');
     $score.text(currentScore);
     sentenceDisplay(currentChallenge.complete());
     $happyMask.addClass('active');
@@ -146,7 +147,7 @@ $(() => {
       if(currentArray === challengesLevel3 && currentChallengeNum > currentArray.length - 1) {
         theEnd();
       } else if(currentArray === challengesLevel2 && currentChallengeNum > currentArray.length - 1) {
-        console.log('level 2 completed');
+        // console.log('level 2 completed');
         levelCompleted(2);
         setTimeout(() => {
           currentChallengeNum = 0;
@@ -156,7 +157,7 @@ $(() => {
           startGame(currentLevel, currentChallengeNum);
         }, 5000);
       } else if(currentArray === challengesLevel1 && currentChallengeNum > currentArray.length - 1) {
-        console.log('level 1 completed');
+        // console.log('level 1 completed');
         levelCompleted(1);
         setTimeout(() => {
           currentChallengeNum = 0;
@@ -167,6 +168,7 @@ $(() => {
         }, 4000);
       } else {
         startGame(currentArray, currentChallengeNum);
+        $hintBtn.removeAttr('disabled');
       }
       // $hintText.text('');
       $happyMask.removeClass('active');
@@ -199,7 +201,7 @@ $(() => {
   // - the hint information becomes visible on screen
   // - maybe the prompt not only gives helping info but insults the player (with shakespeare's words) for his lack of knowledge. Ex.: This is in Richard III, you puking flap-dragon!
   function hintCase(hint) {
-    $hintText.text('');
+    // $hintText.text('');
     currentScore -= 1;
     $score.text(currentScore);
     $hintText.text(hint);
@@ -240,6 +242,7 @@ $(() => {
     }
   }
 
+  // This below looks a bit awkward, because I put it inside the startGame first, but a bug was caused that way, so I had to move it out.
   $hintBtn.on('click', () => {
     // console.log(currentChallengeNum);
     hintCase(currentLevel[currentChallengeNum].hint);
@@ -248,7 +251,7 @@ $(() => {
 
   ///display the current level
   function levelDisplay() {
-    $completed.find('li').remove();
+    // $completed.find('li').remove();
     if(currentLevel === challengesLevel1) {
       $hardness.text('easy');
     } else if(currentLevel === challengesLevel2) {
