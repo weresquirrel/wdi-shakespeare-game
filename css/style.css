@@ -1,11 +1,7 @@
 * {
   box-sizing: border-box;
-  /*cursor: url("../pictures/spearHead.png"),auto;*/
+  cursor: url("../pictures/spearHead04.png"), pointer;
 }
-
-/*.custom {
-  cursor: url(../pictures/spearHead.png), auto;
-}*/
 
 body {
   /*background-color: #e4dbb2;*/
