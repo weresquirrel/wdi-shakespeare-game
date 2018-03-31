@@ -9,12 +9,11 @@
 
 body {
   /*background-color: #e4dbb2;*/
-  /*background-color: #dbd4b4;*/
+
   background:#dbd4b4 url("../pictures/rightCurtain03.png") no-repeat top right;
   background-size: contain;
   margin: 0;
   padding: 0;
-  /*font-family: "Arial";*/
   font-family: "Trebuchet MS";
   letter-spacing: 0.5pt;
   text-transform: uppercase;
@@ -69,8 +68,6 @@ h1 {
 #happy.active{
   background: url("../pictures/activeLeft.png") no-repeat top left;
   background-size: 40px;
-  /*width: 92px;
-  height: auto;*/
 }
 #sad.active{
   background: url("../pictures/activeRight.png") no-repeat top right;
@@ -99,7 +96,8 @@ h2 {
   /*font-size: 4vw;*/
   font-family: "Times New Roman";
   text-transform: none;
-  min-height: 72px;
+  /* min-height: 72px; */
+  height: 72px;
   margin-top: 52px;
 }
 
@@ -131,14 +129,6 @@ h2 {
 
 footer {
   text-align: center;
-  /*background: url("../pictures/stageLine.png") no-repeat bottom center;
-  background-size: contain;*/
-  /*margin-top: 85px;*/
-  /*display: flex;*/
-  /*align-items: flex-end;*/
-  /*justify-content: center;*/
-  /*I'm not sure about the height*/
-  /*height: 25vh;*/
 }
 
 #hint-box {
@@ -169,11 +159,11 @@ button:focus {
 
 button {
   font-family: "Trebuchet MS";
-  /*letter-spacing: 0.5pt;*/
 }
 
 footer p {
-  min-height: 40px;
+  /* min-height: 40px; */
+  height: 50px;
   padding: 20px 0 10px 0;
   display: block;
   text-transform: none;
@@ -182,22 +172,24 @@ footer p {
   /*font-size: 2.2vw;*/
   letter-spacing: 0.5pt;
   margin: 0;
-  /*background-color: yellow;*/
 }
 
 @media screen and (max-width: 700px) {
 /*@media screen and (max-height: 580px) {*/
   body{
-    background-color: red;
+    /* background-color: red; */
   }
 
   h2 {
     font-size: 5vw;
     padding: 0 25px;
+    min-height: 72px;
+    height: auto;
   }
 
   footer p {
-    font-size: 2.7vw;
+    /* font-size: 2.7vw; */
+    font-size: 18px;
     letter-spacing: 0.5pt;
   }
 
@@ -233,8 +225,16 @@ footer p {
 @media screen and (max-width: 550px) {
   body, #wrap {
     background: none;
+    background-color: #dbd4b4;
+  }
+  h1 {
+    background-color: #e07373;
+    border-bottom: 1px solid black;
   }
   h2 {
     font-size: 6.8vw;
+  }
+  #level {
+    margin-top: 30px;
   }
 }
